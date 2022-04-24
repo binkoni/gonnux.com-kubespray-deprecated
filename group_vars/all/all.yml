@@ -1,10 +1,4 @@
 ---
-## Directory where etcd data stored
-etcd_data_dir: /var/lib/etcd
-
-## Experimental kubeadm etcd deployment mode. Available only for new deployment
-etcd_kubeadm_enabled: false
-
 ## Directory where the binaries will be installed
 bin_dir: /usr/local/bin
 
@@ -23,9 +17,9 @@ bin_dir: /usr/local/bin
 #   port: 1234
 
 ## Internal loadbalancers for apiservers
-# loadbalancer_apiserver_localhost: true
+loadbalancer_apiserver_localhost: true
 # valid options are "nginx" or "haproxy"
-# loadbalancer_apiserver_type: nginx  # valid values "nginx" or "haproxy"
+loadbalancer_apiserver_type: nginx
 
 ## If the cilium is going to be used in strict mode, we can use the
 ## localhost connection and not use the external LB. If this parameter is
@@ -88,7 +82,7 @@ no_proxy_exclude_workers: false
 ## This setting determines whether certs are generated via scripts.
 ## Chose 'none' if you provide your own certificates.
 ## Option is  "script", "none"
-# cert_management: script
+cert_management: script
 
 ## Set to true to allow pre-checks to fail and continue deployment
 # ignore_assert_errors: false
@@ -116,3 +110,6 @@ no_proxy_exclude_workers: false
 
 ## Check if access_ip responds to ping. Set false if your firewall blocks ICMP.
 # ping_access_ip: true
+
+# sysctl_file_path to add sysctl conf to
+# sysctl_file_path: "/etc/sysctl.d/99-sysctl.conf"
